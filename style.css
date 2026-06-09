@@ -1,0 +1,420 @@
+html,
+body {
+margin: 0;
+overflow: hidden;
+background: #000;
+color: #fff;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+canvas {
+display: block;
+}
+
+/* =========================
+PANELS
+========================= */
+
+#ui,
+#metrics {
+position: absolute;
+z-index: 10;
+
+background: rgba(0, 0, 0, 0.72);
+
+border: 1px solid rgba(180, 120, 255, 0.45);
+
+box-shadow:
+0 0 20px rgba(150, 80, 255, 0.18),
+inset 0 0 10px rgba(255,255,255,0.03);
+
+border-radius: 10px;
+
+padding: 14px;
+
+backdrop-filter: blur(5px);
+}
+
+#ui {
+top: 12px;
+left: 12px;
+width: 285px;
+}
+
+#metrics {
+top: 12px;
+right: 12px;
+
+width: 340px;
+
+max-height: calc(100vh - 48px);
+
+overflow-y: auto;
+
+scroll-behavior: smooth;
+}
+
+/* =========================
+TYPOGRAPHY
+========================= */
+
+h2 {
+font-size: 18px;
+margin: 0 0 4px 0;
+letter-spacing: 0.3px;
+}
+
+h3 {
+font-size: 13px;
+margin: 10px 0 5px 0;
+color: #ddd;
+}
+
+.subtitle {
+margin: 0 0 12px 0;
+font-size: 12px;
+color: #bbb;
+}
+
+label {
+display: block;
+font-size: 13px;
+margin-top: 10px;
+}
+
+/* =========================
+SLIDERS
+========================= */
+
+input[type="range"] {
+width: 100%;
+margin-top: 4px;
+cursor: pointer;
+}
+
+/* =========================
+CHECKBOXES
+========================= */
+
+.check {
+display: flex;
+align-items: center;
+gap: 7px;
+}
+
+.check input {
+margin: 0;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+.buttonRow {
+display: flex;
+gap: 8px;
+margin-top: 12px;
+}
+
+button {
+background: rgba(130, 80, 210, 0.25);
+
+border: 1px solid rgba(200, 160, 255, 0.5);
+
+color: white;
+
+border-radius: 6px;
+
+padding: 7px 10px;
+
+cursor: pointer;
+
+transition: 0.18s ease;
+}
+
+button:hover {
+background: rgba(160, 100, 255, 0.38);
+
+transform: translateY(-1px);
+}
+
+/* =========================
+GUIDE PANEL
+========================= */
+
+#guideBtn {
+
+width: 100%;
+
+margin-top: 8px;
+margin-bottom: 10px;
+
+background:
+rgba(
+80,
+120,
+255,
+0.18
+);
+
+border:
+1px solid
+rgba(
+180,
+210,
+255,
+0.28
+);
+
+font-size: 12px;
+}
+
+#guideBtn:hover {
+
+background:
+rgba(
+120,
+150,
+255,
+0.30
+);
+}
+
+.guidePanel {
+
+font-size: 11px;
+
+line-height: 1.45;
+
+color: #d4d4d4;
+
+padding: 8px;
+
+margin-bottom: 12px;
+
+border-radius: 8px;
+
+background:
+rgba(
+255,
+255,
+255,
+0.04
+);
+
+border:
+1px solid
+rgba(
+255,
+255,
+255,
+0.08
+);
+}
+
+.guidePanel div {
+margin-bottom: 4px;
+}
+
+.hidden {
+display: none;
+}
+
+/* =========================
+HUD
+========================= */
+
+#hud {
+margin-top: 13px;
+
+padding-top: 10px;
+
+border-top: 1px solid rgba(255,255,255,0.18);
+
+font-size: 13px;
+
+line-height: 1.45;
+
+color: #ddd;
+}
+
+/* =========================
+METRIC GRID
+========================= */
+
+.metricGrid {
+display: grid;
+
+grid-template-columns: 1fr auto;
+
+gap: 5px 12px;
+
+font-size: 13px;
+
+margin-top: 10px;
+
+padding-bottom: 10px;
+
+border-bottom: 1px solid rgba(255,255,255,0.16);
+}
+
+.metricGrid strong {
+color: #f0ddff;
+transition: 0.2s ease;
+}
+
+/* =========================
+COMMUNITY METRICS
+========================= */
+
+#communityCount,
+#largestCommunity,
+#communityCoverage {
+color: #7dffb3;
+}
+
+/* =========================
+HUB METRICS
+========================= */
+
+#hubCount,
+#largestHub {
+color: #ffd966;
+}
+
+/* =========================
+BRIDGE METRICS
+========================= */
+
+#bridgeCount,
+#bridgeCoverage {
+color: #ff8a8a;
+}
+
+/* =========================
+CHART BLOCKS
+========================= */
+
+.chartBlock {
+margin-top: 10px;
+}
+
+.bars {
+font-size: 11px;
+line-height: 1.1;
+}
+
+/* =========================
+BAR CHART ROWS
+========================= */
+
+.barRow {
+display: grid;
+
+grid-template-columns: 58px 1fr 36px;
+
+align-items: center;
+
+gap: 6px;
+
+margin: 3px 0;
+}
+
+.barLabel {
+color: #bbb;
+white-space: nowrap;
+}
+
+.barTrack {
+height: 8px;
+
+background: rgba(255,255,255,0.09);
+
+border-radius: 8px;
+
+overflow: hidden;
+}
+
+.barFill {
+height: 100%;
+
+background: linear-gradient(
+90deg,
+rgba(145,80,255,0.85),
+rgba(255,255,255,0.90)
+);
+
+border-radius: 8px;
+}
+
+.barValue {
+text-align: right;
+color: #ccc;
+}
+
+/* =========================
+SCROLLBAR
+========================= */
+
+#metrics::-webkit-scrollbar {
+width: 8px;
+}
+
+#metrics::-webkit-scrollbar-track {
+background:
+rgba(
+255,
+255,
+255,
+0.05
+);
+}
+
+#metrics::-webkit-scrollbar-thumb {
+background:
+rgba(
+180,
+120,
+255,
+0.35
+);
+
+border-radius: 8px;
+}
+
+#metrics::-webkit-scrollbar-thumb:hover {
+background:
+rgba(
+220,
+180,
+255,
+0.55
+);
+}
+
+/* ==========================================
+COMMUNITY VISUAL SYSTEM
+========================================== */
+
+.communityMetric {
+color: #7dffb3;
+}
+
+.communityHalo {
+
+box-shadow:
+0 0 10px rgba(
+120,
+255,
+180,
+.45
+);
+}
+
+.hubMetric {
+color: #ffd966;
+}
+
+.bridgeMetric {
+color: #ff7b7b;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Alpha Ω Emergence Explorer v3.2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="ui">
+    <h2>Alpha Ω Emergence Explorer v3.2</h2>
+
+    <p class="subtitle">
+      Organic emergence + hubs + bridges + communities
+    </p>
+
+    <label>Scale / Growth: <span id="scaleVal">75</span></label>
+    <input type="range" id="scale" min="0" max="100" value="75">
+
+    <label>UV ↔ IR Detail: <span id="detailVal">20</span></label>
+    <input type="range" id="detail" min="0" max="100" value="20">
+
+    <label>Observer Rotation: <span id="rotationVal">0°</span></label>
+    <input type="range" id="rotation" min="0" max="360" value="0">
+
+    <label>Organic Drift: <span id="driftVal">50</span></label>
+    <input type="range" id="drift" min="0" max="100" value="50">
+
+    <div class="buttonRow">
+      <button id="seedBtn">New Seed</button>
+      <button id="resetBtn">Reset View</button>
+    </div>
+
+    <label class="check"><input type="checkbox" id="density"> Density Layer</label>
+    <label class="check"><input type="checkbox" id="heatmap"> Emergence Heatmap</label>
+    <label class="check"><input type="checkbox" id="clusters"> Cluster Detection</label>
+    <label class="check"><input type="checkbox" id="communities" checked> Community Detection</label>
+    <label class="check"><input type="checkbox" id="hubs" checked> Hub Detection</label>
+    <label class="check"><input type="checkbox" id="bridges" checked> Bridge Detection</label>
+    <label class="check"><input type="checkbox" id="links" checked> Connections</label>
+    <label class="check"><input type="checkbox" id="curvatureColor"> Curvature Color</label>
+
+    <div id="hud">
+      <strong>Live HUD</strong><br>
+      Scale: <span id="hudScale">75</span><br>
+      Visible Nodes: <span id="hudNodes">0</span><br>
+      Total Nodes: <span id="hudTotal">0</span><br>
+      Depth: <span id="hudDepth">0</span><br>
+      View: <span id="hudView">UV</span><br>
+      Seed: <span id="hudSeed">0</span>
+    </div>
+  </div>
+
+  <div id="metrics">
+
+    <h2>Emergence Metrics</h2>
+
+    <button id="guideBtn">ⓘ Metrics Guide</button>
+
+    <div id="guidePanel" class="guidePanel hidden">
+      <div><b>Avg Degree</b> — Average connections per node.</div>
+      <div><b>Core Ratio</b> — Interior node concentration.</div>
+      <div><b>Frontier</b> — Outer boundary nodes.</div>
+      <div><b>Shell Peaks</b> — Radial density hotspots.</div>
+      <div><b>Avg Curvature</b> — Average bend angle.</div>
+      <div><b>Community Count</b> — Dense local regions.</div>
+      <div><b>Hub Count</b> — High-connectivity nodes.</div>
+      <div><b>Bridge Count</b> — Connector nodes.</div>
+      <div><b>Peak Density</b> — Strongest local concentration.</div>
+    </div>
+
+    <div class="metricGrid">
+
+      <div>Avg Degree</div>
+      <strong id="avgDegree">0</strong>
+
+      <div>Max Degree</div>
+      <strong id="maxDegree">0</strong>
+
+      <div>Core Ratio</div>
+      <strong id="coreRatio">0%</strong>
+
+      <div>Frontier</div>
+      <strong id="frontierRatio">0%</strong>
+
+      <div>Shell Peaks</div>
+      <strong id="shellPeaks">0</strong>
+
+      <div>Avg Curvature</div>
+      <strong id="avgCurvature">0°</strong>
+
+      <div>Cluster Count</div>
+      <strong id="clusterCount">0</strong>
+
+      <div>Largest Cluster</div>
+      <strong id="largestCluster">0</strong>
+
+      <div>Cluster Coverage</div>
+      <strong id="clusterCoverage">0%</strong>
+
+      <div>Community Count</div>
+      <strong id="communityCount">0</strong>
+
+      <div>Largest Community</div>
+      <strong id="largestCommunity">0</strong>
+
+      <div>Community Coverage</div>
+      <strong id="communityCoverage">0%</strong>
+
+      <div>Hub Count</div>
+      <strong id="hubCount">0</strong>
+
+      <div>Largest Hub</div>
+      <strong id="largestHub">0</strong>
+
+      <div>Bridge Count</div>
+      <strong id="bridgeCount">0</strong>
+
+      <div>Bridge Coverage</div>
+      <strong id="bridgeCoverage">0%</strong>
+
+      <div>Peak Density</div>
+      <strong id="peakDensity">0</strong>
+
+      <div>Pressure Centers</div><strong id="pressureCenterCount">0</strong>
+      <div>Avg Pressure</div><strong id="avgPressure">0</strong>
+      <div>Max Pressure</div><strong id="maxPressure">0</strong>
+      <div>Pressure Coverage</div><strong id="pressureCoverage">0%</strong>
+
+      <div>Emergence State</div>
+      <strong id="emergenceState">-</strong>
+
+      <div>Interpretation</div>
+      <strong id="emergenceInterpretation">-</strong>
+
+    </div>
+
+    <div class="chartBlock">
+      <h3>Degree Distribution</h3>
+      <div id="degreeBars" class="bars"></div>
+    </div>
+
+    <div class="chartBlock">
+      <h3>Radial Density</h3>
+      <div id="radialBars" class="bars"></div>
+    </div>
+
+    <div class="chartBlock">
+      <h3>Curvature Histogram</h3>
+      <div id="curvatureBars" class="bars"></div>
+    </div>
+
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
